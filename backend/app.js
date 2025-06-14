@@ -3,9 +3,12 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const bugRoutes=require("./routes/bugRoutes")
+const profileRoutes = require('./routes/profileRoutes');
+
 dotenv.config();
 
 const app = express();
+app.use(express.json());
 const session = require('express-session');
 const authorityRoutes = require('./routes/authorityRoutes');
 
@@ -25,6 +28,10 @@ app.use(session({
 
 connectDB();
 
+// ... your other routes
+
+// Use routes
+app.use('/api/profile', profileRoutes);
 
 app.use(express.json());
 app.use('/api/authority', authorityRoutes);

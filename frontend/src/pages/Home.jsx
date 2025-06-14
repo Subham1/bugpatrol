@@ -7,7 +7,7 @@ import grp from './grp.png'
 const Home = () => {
   return (
     <div className="home-page">
-      <Navbars />
+     
       
       {/* Hero Section */}
       <section className="hero-section">
@@ -128,7 +128,7 @@ const Home = () => {
                   <li>Get community support and solutions</li>
                   <li>Track issue resolution progress</li>
                 </ul>
-                <Button variant="primary" className="user-type-btn">Join as Citizen</Button>
+                <Button variant="primary" className="user-type-btn" href='/login'>Join as Citizen</Button>
               </div>
             </Col>
             <Col lg={6} md={6} sm={12}>
@@ -139,7 +139,7 @@ const Home = () => {
                   <li>Direct communication with citizens</li>
                   <li>Track department performance</li>
                 </ul>
-                <Button variant="primary" className="user-type-btn">Register as Authority</Button>
+                <Button variant="primary" className="user-type-btn" href='/register'>Register as Authority</Button>
               </div>
             </Col>
           </Row>

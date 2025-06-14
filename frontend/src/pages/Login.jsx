@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // <-- adjust path if needed
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { setUserInfo } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +41,8 @@ const LoginPage = () => {
       // Store token and user info in localStorage
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userInfo', JSON.stringify(response.data.user));
-  
+       setUserInfo(response.data.user);
+
        console.log(response.data.user);
       // Redirect based on role
       const redirectPath = role === 'citizen' ? '/form' : '/dashboard';
